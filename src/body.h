@@ -23,7 +23,6 @@ static Janet cfun_body_set_position(int32_t argc, Janet *argv) {
   cpBody *body = cp_getbody(argv, 0);
   cpVect position = cp_getvec2(argv, 1);
   cpBodySetPosition(body, position);
-
   return janet_wrap_nil();
 }
 static Janet cfun_body_set_velocity(int32_t argc, Janet *argv) {
@@ -31,7 +30,6 @@ static Janet cfun_body_set_velocity(int32_t argc, Janet *argv) {
   cpBody *body = cp_getbody(argv, 0);
   cpVect velocity = cp_getvec2(argv, 1);
   cpBodySetVelocity(body, velocity);
-
   return janet_wrap_nil();
 }
 
