@@ -22,13 +22,33 @@ static Janet cfun_circle_shape_new(int32_t argc, Janet *argv) {
   return cp_wrap_shape(shape);
 }
 
+static Janet cfun_shape_get_elasticity(int32_t argc, Janet *argv)  {
+  janet_fixarity(argc, 1);
+  cpShape *shape = cp_getshape(argv, 0);
+  float elasticity = cpShapeGetElasticity(shape);
+  return janet_wrap_number(elasticity);
+}
+
+static Janet cfun_shape_set_elasticity(int32_t argc, Janet *argv)  {
+  janet_fixarity(argc, 2);
+  cpShape *shape = cp_getshape(argv, 0);
+  float value = janet_getnumber(argv, 1);
+  cpShapeSetElasticity(shape, value);
+  return janet_wrap_nil();
+}
+
+static Janet cfun_shape_get_friction(int32_t argc, Janet *argv)  {
+  janet_fixarity(argc, 1);
+  cpShape *shape = cp_getshape(argv, 0);
+  float friction = cpShapeGetFriction(shape);
+  return janet_wrap_number(friction);
+}
+
 static Janet cfun_shape_set_friction(int32_t argc, Janet *argv)  {
   janet_fixarity(argc, 2);
-
   cpShape *shape = cp_getshape(argv, 0);
   float value = janet_getnumber(argv, 1);
   cpShapeSetFriction(shape, value);
-
   return janet_wrap_nil();
 }
 
@@ -42,6 +62,9 @@ static Janet cfun_shape_free(int32_t argc, Janet *argv)  {
 static JanetReg shapes_cfuns[] = {
   {"segment-shape-new", cfun_segment_shape_new, "(chipmunk/segment-shape-new body vec-a vec-b radius)"},
   {"circle-shape-new", cfun_circle_shape_new, "(chipmunk/circle-shape-new body radius offset)"},
+  {"shape-get-elasticity", cfun_shape_get_elasticity, "(chipmunk/shape-get-elasticity shape)"},
+  {"shape-set-elasticity", cfun_shape_set_elasticity, "(chipmunk/shape-set-elasticity shape value)"},
+  {"shape-get-friction", cfun_shape_get_friction, "(chipmunk/shape-get-friction shape)"},
   {"shape-set-friction", cfun_shape_set_friction, "(chipmunk/shape-set-friction shape value)"},
   {"shape-free", cfun_shape_free, "(chipmunk/shape-free shape)"},
   {NULL, NULL, NULL}
