@@ -26,6 +26,14 @@ static Janet cfun_body_set_position(int32_t argc, Janet *argv) {
 
   return janet_wrap_nil();
 }
+static Janet cfun_body_set_velocity(int32_t argc, Janet *argv) {
+  janet_fixarity(argc, 2);
+  cpBody *body = cp_getbody(argv, 0);
+  cpVect velocity = cp_getvec2(argv, 1);
+  cpBodySetVelocity(body, velocity);
+
+  return janet_wrap_nil();
+}
 
 static Janet cfun_body_get_position(int32_t argc, Janet *argv) {
   janet_fixarity(argc, 1);
@@ -51,6 +59,7 @@ static JanetReg body_cfuns[] = {
   {"moment-for-circle", cfun_moment_for_circle, "(chipmunk/moment-for-circle mass r1 r2 offset)"},
   {"body-new", cfun_body_new, "(chipmunk/body-new mass inertia)"},
   {"body-set-position", cfun_body_set_position, "(chipmunk/body-set-position body [1 2])"},
+  {"body-set-velocity", cfun_body_set_velocity, "(chipmunk/body-set-velocity body [1 2])"},
   {"body-get-position", cfun_body_get_position, "(chipmunk/body-get-position body)"},
   {"body-get-velocity", cfun_body_get_velocity, "(chipmunk/body-get-velocity body)"},
   {"body-free", cfun_body_free, "(chipmunk/body-free body)"},
