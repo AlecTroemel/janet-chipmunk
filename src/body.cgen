@@ -2,15 +2,14 @@
    (set-lib-name "body"))
 
 ($
+ # Body
  (def-wrapper body-new cpBodyNew
    :doc "create a new cpBody."
    :bindings [(float mass) (float inertia)]
    :result (cpBody body))
-
  (def-wrapper body-free cpBodyFree
    :doc "destroy the cpBody."
    :bindings [(cpBody body)])
-
 
  # Position
  (def-wrapper body-get-position cpBodyGetPosition
