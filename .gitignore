@@ -125,5 +125,6 @@ flycheck_*.el
 # Build files
 /build
 *.h
+*.c
 jpm_tree
 # End of https://www.toptal.com/developers/gitignore/api/c,cmake,emacs
