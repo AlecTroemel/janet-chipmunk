@@ -27,10 +27,7 @@
 
      (defn [JANET_MODULE_PREFIX JANET_API] _janet_init [(env JanetTable*)] void
        ,;(map |['janet_cfuns 'env '"chipmunk" (symbol $ '_cfuns)]
-              (keys libs-fns)))
-
-
-    ))
+              (keys libs-fns)))))
 
 (defn- ndoc [name doc bindings]
   (string
