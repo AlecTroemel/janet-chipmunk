@@ -32,7 +32,7 @@
 
  # Elasticity
  (def-wrapper shape-get-elasticity cpShapeGetElasticity
-   :doc "Elasticity of the shape."
+   :doc "get Elasticity of the shape."
    :bindings [(cpShape shape)]
    :result (float elasticity))
  (def-wrapper shape-set-elasticity cpShapeSetElasticity
@@ -41,7 +41,7 @@
 
  # Friction
  (def-wrapper shape-get-friction cpShapeGetFriction
-   :doc "Friction of the shape."
+   :doc "get Friction of the shape."
    :bindings [(cpShape shape)]
    :result (float friction))
  (def-wrapper shape-set-friction cpShapeSetFriction

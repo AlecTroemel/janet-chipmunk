@@ -35,12 +35,14 @@
        ,;(seq [[b-type b-name] :in bindings
                :let [b-name (match b-type
                               'cpBody (symbol '* b-name)
-                              'cpShape (symbol '* b-name)
+                                   'cpShape (symbol '* b-name)
+                                   'cpSpace (symbol '* b-name)
                               _ b-name)
                      nt b-type
                      afn (match b-type
                            'cpBody ~(cp_getbody argv ,i)
-                           'cpShape ~(cp_getshape argv ,i)
+                                'cpShape ~(cp_getshape argv ,i)
+                                'cpSpace ~(cp_getspace argv ,i)
                            'cpVect ~(cp_getvec2 argv ,i)
                            _ ~(,(symbol 'janet_get (std-types nt)) argv ,i))]
                :after (++ i)]
@@ -50,13 +52,15 @@
           [r-type r-name]
           [['def (match r-type
                    'cpBody (symbol '* r-name)
-                   'cpShape (symbol '* r-name)
+                        'cpShape (symbol '* r-name)
+                        'cpSpace (symbol '* r-name)
                    _ r-name)
 
             r-type [fn ;(map last bindings)]]
            ~(return ,(match r-type
                        'cpBody ~(cp_wrap_body ,r-name)
-                       'cpShape ~(cp_wrap_shape ,r-name)
+                            'cpShape ~(cp_wrap_shape ,r-name)
+                            'cpSpace ~(cp_wrap_space ,r-name)
                        'cpVect ~(cp_wrap_vec2 ,r-name)
                        _ [(symbol 'janet_wrap_ (std-types r-type)) r-name]))]
 

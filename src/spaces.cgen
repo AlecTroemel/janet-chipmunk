@@ -1,0 +1,44 @@
+($
+ (use /codes)
+ (set-lib-name "spaces"))
+
+($
+ # Constructors/Deconstructors
+ (def-wrapper space-new cpSpaceNew
+   :doc "Allocates and initializes a cpSpace struct."
+   :bindings []
+   :result (cpSpace space))
+ (def-wrapper space-free cpSpaceFree
+   :doc "destroy the cpSpace."
+   :bindings [(cpSpace space)])
+
+ # Gravity
+ (def-wrapper space-get-gravity cpSpaceGetGravity
+   :doc "get Gravity of the space."
+   :bindings [(cpSpace space)]
+   :result (cpVect gravity))
+ (def-wrapper space-set-gravity cpSpaceSetGravity
+   :doc "Set gravity of the space."
+   :bindings [(cpSpace space) (cpVect gravity)])
+
+ (def-wrapper space-get-static-body cpSpaceGetStaticBody
+   :doc "A dedicated static body for the space. You don’t have to use it, but because its memory is managed automatically with the space its very convenient."
+   :bindings [(cpSpace space)]
+   :result (cpBody body))
+
+ (def-wrapper space-step cpSpaceStep
+   :doc "Update the space for the given time step. Using a fixed time step is highly recommended."
+   :bindings [(cpSpace space) (float dt)])
+
+ # Adders
+ (def-wrapper space-add-shape cpSpaceAddShape
+   :doc "Add shape to space."
+   :bindings [(cpSpace space) (cpShape shape)]
+   :result (cpShape rshape))
+
+ (def-wrapper space-add-body cpSpaceAddBody
+   :doc "Add body to space."
+   :bindings [(cpSpace space) (cpBody body)]
+   :result (cpBody rbody))
+
+ (cfuns-entry))

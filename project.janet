@@ -8,9 +8,11 @@
 (add-loader)
 (import /src/body)
 (import /src/shapes)
+(import /src/spaces)
 
 (task "src/body.h" [] (body/render "src/body.h"))
 (task "src/shapes.h" [] (shapes/render "src/shapes.h"))
+(task "src/spaces.h" [] (spaces/render "src/spaces.h"))
 
 (declare-native
  :name "chipmunk"
@@ -53,4 +55,5 @@
 
  :headers ["src/types.h"
            "src/body.h"
-           "src/shapes.h"])
+           "src/shapes.h"
+           "src/spaces.h"])
