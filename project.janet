@@ -4,6 +4,13 @@
   :url ""
   :author "Alec Troemel <alectroemel@hotmail.com>")
 
+
+(add-loader)
+(import /src/body)
+
+(task "src/body.h" [] (body/render "src/body.h"))
+
+
 (declare-native
  :name "chipmunk"
  :cflags ["-IChipmunk2D/src" "-IChipmunk2D/include"]
@@ -42,4 +49,6 @@
           "Chipmunk2D/src/cpSpaceStep.c"
           "Chipmunk2D/src/cpSpatialIndex.c"
           "Chipmunk2D/src/cpSweep1D.c"]
- :headers ["src/types.h"])
+
+ :headers ["src/types.h"
+           "src/body.h"])
