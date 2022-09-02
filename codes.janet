@@ -2,17 +2,29 @@
 
 (def std-types {'int 'integer
                 'float 'number})
+
 (def libs-fns @{})
 (var lib-name "")
+
 (defn set-lib-name [name]
   (put libs-fns name @[@['NULL 'NULL 'NULL]] )
   (set lib-name name)
   nil)
 
-(def pref '[JANET_MODULE_PREFIX JANET_API])
 (defmacro cfuns-entry []
   (def funsn (symbol lib-name '_cfuns))
   ~'((def (array ,funsn) JanetReg ,(libs-fns lib-name))))
+
+(def pref '[JANET_MODULE_PREFIX JANET_API])
+
+(defmacro module-imports []
+  ~;(map |['@ 'include (string "\"" $ ".h\"")]
+         (keys libs-fns)))
+
+(defmacro module-entries []
+  ~'((defn [JANET_MODULE_PREFIX JANET_API] _janet_init [(env JanetTable*)] void
+       ,;(map |['janet_cfuns 'env '"chipmunk" (symbol $ '_cfuns)]
+              (keys libs-fns)))))
 
 (defn- ndoc [name doc bindings]
   (string

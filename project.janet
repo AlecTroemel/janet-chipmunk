@@ -1,18 +1,21 @@
 (declare-project
   :name "janet-chipmunk"
   :description "Janet bindings to Chipmunk2D physics library."
-  :url ""
+  :url "https://github.com/AlecTroemel/janet-chipmunk.git"
   :author "Alec Troemel <alectroemel@hotmail.com>")
 
 
 (add-loader)
+
 (import /src/body)
 (import /src/shapes)
 (import /src/spaces)
+(import /src/main)
 
 (task "src/body.h" [] (body/render "src/body.h"))
 (task "src/shapes.h" [] (shapes/render "src/shapes.h"))
 (task "src/spaces.h" [] (spaces/render "src/spaces.h"))
+(task "src/main.c" [] (main/render "src/main.c"))
 
 (declare-native
  :name "chipmunk"
