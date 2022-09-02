@@ -1,0 +1,30 @@
+(defn [static] idx_getfloat [(idx JanetView) (i int)] float
+  (if (>= i idx.len)
+    (janet_panicf "index %d outside of range [0, %d)" idx.len))
+  (if (not (janet_checktype (index idx.items i) JANET_NUMBER))
+    (janet_panicf "expected number, got %v" (index idx.items i)))
+  (return (cast float (janet_unwrap_number (index idx.items i)))))
+
+# 2d Vector
+(defn [static] cp_getvec2 [(*argv (const Janet)) (n int32_t)] cpVect
+  (def idx JanetView (janet_getindexed argv n))
+  (return (cpv (idx_getfloat idx 0)
+               (idx_getfloat idx 1))))
+
+(defn [static] cp_wrap_vec2 [(v cpVect)] Janet
+  (def *tup Janet (janet_tuple_begin 2))
+  (set (index tup 0) (janet_wrap_number v.x))
+  (set (index tup 1) (janet_wrap_number v.y))
+  (return (janet_wrap_tuple (janet_tuple_end tup))))
+
+(defn [static] cp_unwrap_vec2 [(val (const Janet))] cpVect
+  (def *tup (const Janet) (janet_unwrap_tuple val))
+  (def x float (janet_unwrap_number (index tup 0)))
+  (def y float (janet_unwrap_number (index tup 1)))
+  (return (cpv x y)))
+
+# Abstract types
+($ (use /codes)
+   (def-wrapper-abstract-type Space cpSpace)
+   (def-wrapper-abstract-type Body cpBody)
+   (def-wrapper-abstract-type Shape cpShape))

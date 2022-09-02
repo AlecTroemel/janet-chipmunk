@@ -7,11 +7,13 @@
 
 (add-loader)
 
+(import /src/types)
 (import /src/body)
 (import /src/shapes)
 (import /src/spaces)
 (import /src/main)
 
+(task "src/types.h" [] (types/render "src/types.h"))
 (task "src/body.h" [] (body/render "src/body.h"))
 (task "src/shapes.h" [] (shapes/render "src/shapes.h"))
 (task "src/spaces.h" [] (spaces/render "src/spaces.h"))
