@@ -344,7 +344,7 @@
 - [x] void cpSpaceFree(cpSpace *space);
 - [ ] int cpSpaceGetIterations(const cpSpace *space);
 - [ ] void cpSpaceSetIterations(cpSpace *space, int iterations);
-- [ ] cpVect cpSpaceGetGravity(const cpSpace *space);
+- [x] cpVect cpSpaceGetGravity(const cpSpace *space);
 - [x] void cpSpaceSetGravity(cpSpace *space, cpVect gravity);
 - [ ] cpFloat cpSpaceGetDamping(const cpSpace *space);
 - [ ] void cpSpaceSetDamping(cpSpace *space, cpFloat damping);
