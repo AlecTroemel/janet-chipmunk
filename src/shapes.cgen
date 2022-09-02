@@ -4,11 +4,11 @@
 
 ($
  # Moments
- (def-wrapper moment-from-circle cpMomentForCircle
+ (def-wrapper moment-for-circle cpMomentForCircle
    :doc "Calculate the moment of inertia for a hollow circle, r1 and r2 are the inner and outer diameters in no particular order."
    :bindings [(float mass) (float r1) (float r2) (cpVect offset)]
    :result (float moment))
- (def-wrapper moment-from-box cpMomentForBox
+ (def-wrapper moment-for-box cpMomentForBox
    :doc "Calculate the moment of inertia for a solid box centered on the body."
    :bindings [(float mass) (float width) (float height)]
    :result (float moment))

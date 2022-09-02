@@ -22,9 +22,15 @@
          (keys libs-fns)))
 
 (defmacro module-entries []
-  ~'((defn [JANET_MODULE_PREFIX JANET_API] _janet_init [(env JanetTable*)] void
+  ~'((defn ,pref _janet_mod_config [] JanetBuildConfig
+       (return (janet_config_current)))
+
+     (defn [JANET_MODULE_PREFIX JANET_API] _janet_init [(env JanetTable*)] void
        ,;(map |['janet_cfuns 'env '"chipmunk" (symbol $ '_cfuns)]
-              (keys libs-fns)))))
+              (keys libs-fns)))
+
+
+    ))
 
 (defn- ndoc [name doc bindings]
   (string
