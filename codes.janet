@@ -36,48 +36,57 @@
       [" " (string/join (map last bindings) " ")] [])
    ")\n\n" doc))
 
+(defn- pointer-type? [t]
+  (match t
+    'cpBody true
+    'cpShape true
+    'cpSpace true
+    _ false))
+
+(defn- deref-if-pointer [typ name]
+  (if (pointer-type? typ)
+    (symbol '* name)
+    name))
+
+(defn- get-getter [typ i]
+  (match typ
+    'cpBody ~(cp_getbody argv ,i)
+    'cpShape ~(cp_getshape argv ,i)
+    'cpSpace ~(cp_getspace argv ,i)
+    'cpVect ~(cp_getvec2 argv ,i)
+    _ ~(,(symbol 'janet_get (std-types typ)) argv ,i)))
+
+(defn- get-wrapper [typ name]
+  (match typ
+    'cpBody ~(cp_wrap_body ,name)
+    'cpShape ~(cp_wrap_shape ,name)
+    'cpSpace ~(cp_wrap_space ,name)
+    'cpVect ~(cp_wrap_vec2 ,name)
+    _ [(symbol 'janet_wrap_ (std-types typ)) name]))
+
 (defmacro def-wrapper [name fn &named doc bindings result]
   (default result :nil)
   (def arity (length bindings))
   (def cname (string "cfun_" (string/replace-all "-" "_" name)))
   (array/insert (libs-fns lib-name)
                 0 @[(string name) (symbol cname) (ndoc name doc bindings)])
-
   (var i 0)
   ~'((defn [static] ,cname [(argc int) (*argv Janet)] Janet
        (janet_fixarity argc ,arity)
 
+       # Arguments
        ,;(seq [[b-type b-name] :in bindings
-               :let [b-name (match b-type
-                              'cpBody (symbol '* b-name)
-                                   'cpShape (symbol '* b-name)
-                                   'cpSpace (symbol '* b-name)
-                              _ b-name)
-                     nt b-type
-                     afn (match b-type
-                           'cpBody ~(cp_getbody argv ,i)
-                                'cpShape ~(cp_getshape argv ,i)
-                                'cpSpace ~(cp_getspace argv ,i)
-                           'cpVect ~(cp_getvec2 argv ,i)
-                           _ ~(,(symbol 'janet_get (std-types nt)) argv ,i))]
+               :let [b-name (deref-if-pointer b-type b-name)
+                     afn (get-getter b-type i)]
                :after (++ i)]
-              ~(def ,b-name ,nt ,afn))
+              ~(def ,b-name ,b-type ,afn))
 
+       # actual function call and return
        ,;(match result
           [r-type r-name]
-          [['def (match r-type
-                   'cpBody (symbol '* r-name)
-                        'cpShape (symbol '* r-name)
-                        'cpSpace (symbol '* r-name)
-                   _ r-name)
-
+          [['def (deref-if-pointer r-type r-name)
             r-type [fn ;(map last bindings)]]
-           ~(return ,(match r-type
-                       'cpBody ~(cp_wrap_body ,r-name)
-                            'cpShape ~(cp_wrap_shape ,r-name)
-                            'cpSpace ~(cp_wrap_space ,r-name)
-                       'cpVect ~(cp_wrap_vec2 ,r-name)
-                       _ [(symbol 'janet_wrap_ (std-types r-type)) r-name]))]
+           ~(return ,(get-wrapper r-type r-name))]
 
           :nil
             [[fn ;(map last bindings)]
