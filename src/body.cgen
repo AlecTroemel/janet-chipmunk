@@ -1,8 +1,9 @@
-($ (use /codes)
-   (set-lib-name "body"))
+($
+ (use /codes)
+ (set-lib-name "body"))
 
 ($
- # Body
+ # Constructors/Deconstructors
  (def-wrapper body-new cpBodyNew
    :doc "create a new cpBody."
    :bindings [(float mass) (float inertia)]

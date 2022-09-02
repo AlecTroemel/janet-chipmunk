@@ -7,9 +7,10 @@
 
 (add-loader)
 (import /src/body)
+(import /src/shapes)
 
 (task "src/body.h" [] (body/render "src/body.h"))
-
+(task "src/shapes.h" [] (shapes/render "src/shapes.h"))
 
 (declare-native
  :name "chipmunk"
@@ -51,4 +52,5 @@
           "Chipmunk2D/src/cpSweep1D.c"]
 
  :headers ["src/types.h"
-           "src/body.h"])
+           "src/body.h"
+           "src/shapes.h"])

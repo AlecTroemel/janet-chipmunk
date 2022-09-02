@@ -1,0 +1,51 @@
+($
+ (use /codes)
+ (set-lib-name "shapes"))
+
+($
+ # Moments
+ (def-wrapper moment-from-circle cpMomentForCircle
+   :doc "Calculate the moment of inertia for a hollow circle, r1 and r2 are the inner and outer diameters in no particular order."
+   :bindings [(float mass) (float r1) (float r2) (cpVect offset)]
+   :result (float moment))
+ (def-wrapper moment-from-box cpMomentForBox
+   :doc "Calculate the moment of inertia for a solid box centered on the body."
+   :bindings [(float mass) (float width) (float height)]
+   :result (float moment))
+
+ # Constructors/Deconstructors
+ (def-wrapper segment-shape-new cpSegmentShapeNew
+   :doc "Create new segment shape."
+   :bindings [(cpBody body) (cpVect a) (cpVect b) (float radius)]
+   :result (cpShape shape))
+ (def-wrapper circle-shape-new cpCircleShapeNew
+   :doc "Create new circle shape."
+   :bindings [(cpBody body) (float radius) (cpVect offset)]
+   :result (cpShape shape))
+ (def-wrapper box-shape-new cpBoxShapeNew
+   :doc "Create new box shape."
+   :bindings [(cpBody body) (float width) (float height) (float radius)]
+   :result (cpShape shape))
+ (def-wrapper shape-free cpShapeFree
+   :doc "destroy the cpShape."
+   :bindings [(cpShape shape)])
+
+ # Elasticity
+ (def-wrapper shape-get-elasticity cpShapeGetElasticity
+   :doc "Elasticity of the shape."
+   :bindings [(cpShape shape)]
+   :result (float elasticity))
+ (def-wrapper shape-set-elasticity cpShapeSetElasticity
+   :doc "Set elasticity of the shape."
+   :bindings [(cpShape shape) (float elasticity)])
+
+ # Friction
+ (def-wrapper shape-get-friction cpShapeGetFriction
+   :doc "Friction of the shape."
+   :bindings [(cpShape shape)]
+   :result (float friction))
+ (def-wrapper shape-set-friction cpShapeSetFriction
+   :doc "Set friction of the shape."
+   :bindings [(cpShape shape) (float friction)])
+
+ (cfuns-entry))
