@@ -1,14 +1,14 @@
 # chipmunk.h
 - [ ] void cpMessage(const char *condition, const char *file, int line, int isError, int isHardError, const char *message, ...);
 - [ ] extern const char *cpVersionString;
-- [ ] cpFloat cpMomentForCircle(cpFloat m, cpFloat r1, cpFloat r2, cpVect offset);
+- [x] cpFloat cpMomentForCircle(cpFloat m, cpFloat r1, cpFloat r2, cpVect offset);
 - [ ] cpFloat cpAreaForCircle(cpFloat r1, cpFloat r2);
 - [ ] cpFloat cpMomentForSegment(cpFloat m, cpVect a, cpVect b, cpFloat radius);
 - [ ] cpFloat cpAreaForSegment(cpVect a, cpVect b, cpFloat radius);
 - [ ] cpFloat cpMomentForPoly(cpFloat m, int count, const cpVect *verts, cpVect offset, cpFloat radius);
 - [ ] cpFloat cpAreaForPoly(const int count, const cpVect *verts, cpFloat radius);
 - [ ] cpVect cpCentroidForPoly(const int count, const cpVect *verts);
-- [ ] cpFloat cpMomentForBox(cpFloat m, cpFloat width, cpFloat height);
+- [x] cpFloat cpMomentForBox(cpFloat m, cpFloat width, cpFloat height);
 - [ ] cpFloat cpMomentForBox2(cpFloat m, cpBB box);
 - [ ] int cpConvexHull(int count, const cpVect *verts, cpVect *result, int *first, cpFloat tol);
 
@@ -56,11 +56,11 @@
 # cpBody.h
 - [ ] cpBody* cpBodyAlloc(void);
 - [ ] cpBody* cpBodyInit(cpBody *body, cpFloat mass, cpFloat moment);
-- [ ] cpBody* cpBodyNew(cpFloat mass, cpFloat moment);
+- [x] cpBody* cpBodyNew(cpFloat mass, cpFloat moment);
 - [ ] cpBody* cpBodyNewKinematic(void);
 - [ ] cpBody* cpBodyNewStatic(void);
 - [ ] void cpBodyDestroy(cpBody *body);
-- [ ] void cpBodyFree(cpBody *body);
+- [x] void cpBodyFree(cpBody *body);
 - [ ] void cpBodyActivate(cpBody *body);
 - [ ] void cpBodyActivateStatic(cpBody *body, cpShape *filter);
 - [ ] void cpBodySleep(cpBody *body);
@@ -73,14 +73,14 @@
 - [ ] void cpBodySetMass(cpBody *body, cpFloat m);
 - [ ] cpFloat cpBodyGetMoment(const cpBody *body);
 - [ ] void cpBodySetMoment(cpBody *body, cpFloat i);
-- [ ] cpVect cpBodyGetPosition(const cpBody *body);
-- [ ] void cpBodySetPosition(cpBody *body, cpVect pos);
+- [x] cpVect cpBodyGetPosition(const cpBody *body);
+- [x] void cpBodySetPosition(cpBody *body, cpVect pos);
 - [ ] cpVect cpBodyGetCenterOfGravity(const cpBody *body);
 - [ ] void cpBodySetCenterOfGravity(cpBody *body, cpVect cog);
-- [ ] cpVect cpBodyGetVelocity(const cpBody *body);
-- [ ] void cpBodySetVelocity(cpBody *body, cpVect velocity);
-- [ ] cpVect cpBodyGetForce(const cpBody *body);
-- [ ] void cpBodySetForce(cpBody *body, cpVect force);
+- [x] cpVect cpBodyGetVelocity(const cpBody *body);
+- [x] void cpBodySetVelocity(cpBody *body, cpVect velocity);
+- [x] cpVect cpBodyGetForce(const cpBody *body);
+- [x] void cpBodySetForce(cpBody *body, cpVect force);
 - [ ] cpFloat cpBodyGetAngle(const cpBody *body);
 - [ ] void cpBodySetAngle(cpBody *body, cpFloat a);
 - [ ] cpFloat cpBodyGetAngularVelocity(const cpBody *body);
@@ -239,7 +239,7 @@
 - [ ] cpShape* cpPolyShapeNewRaw(cpBody *body, int count, const cpVect *verts, cpFloat radius);
 - [ ] cpPolyShape* cpBoxShapeInit(cpPolyShape *poly, cpBody *body, cpFloat width, cpFloat height, cpFloat radius);
 - [ ] cpPolyShape* cpBoxShapeInit2(cpPolyShape *poly, cpBody *body, cpBB box, cpFloat radius);
-- [ ] cpShape* cpBoxShapeNew(cpBody *body, cpFloat width, cpFloat height, cpFloat radius);
+- [x] cpShape* cpBoxShapeNew(cpBody *body, cpFloat width, cpFloat height, cpFloat radius);
 - [ ] cpShape* cpBoxShapeNew2(cpBody *body, cpBB box, cpFloat radius);
 - [ ] int cpPolyShapeGetCount(const cpShape *shape);
 - [ ] cpVect cpPolyShapeGetVert(const cpShape *shape, int index);
@@ -269,7 +269,7 @@
 
 # cpShape.h
 - [ ] void cpShapeDestroy(cpShape *shape);
-- [ ] void cpShapeFree(cpShape *shape);
+- [x] void cpShapeFree(cpShape *shape);
 - [ ] cpBB cpShapeCacheBB(cpShape *shape);
 - [ ] cpBB cpShapeUpdate(cpShape *shape, cpTransform transform);
 - [ ] cpFloat cpShapePointQuery(const cpShape *shape, cpVect p, cpPointQueryInfo *out);
@@ -288,10 +288,10 @@
 - [ ] cpBB cpShapeGetBB(const cpShape *shape);
 - [ ] cpBool cpShapeGetSensor(const cpShape *shape);
 - [ ] void cpShapeSetSensor(cpShape *shape, cpBool sensor);
-- [ ] cpFloat cpShapeGetElasticity(const cpShape *shape);
-- [ ] void cpShapeSetElasticity(cpShape *shape, cpFloat elasticity);
-- [ ] cpFloat cpShapeGetFriction(const cpShape *shape);
-- [ ] void cpShapeSetFriction(cpShape *shape, cpFloat friction);
+- [x] cpFloat cpShapeGetElasticity(const cpShape *shape);
+- [x] void cpShapeSetElasticity(cpShape *shape, cpFloat elasticity);
+- [x] cpFloat cpShapeGetFriction(const cpShape *shape);
+- [x] void cpShapeSetFriction(cpShape *shape, cpFloat friction);
 - [ ] cpVect cpShapeGetSurfaceVelocity(const cpShape *shape);
 - [ ] void cpShapeSetSurfaceVelocity(cpShape *shape, cpVect surfaceVelocity);
 - [ ] cpDataPointer cpShapeGetUserData(const cpShape *shape);
@@ -302,12 +302,12 @@
 - [ ] void cpShapeSetFilter(cpShape *shape, cpShapeFilter filter);
 - [ ] cpCircleShape* cpCircleShapeAlloc(void);
 - [ ] cpCircleShape* cpCircleShapeInit(cpCircleShape *circle, cpBody *body, cpFloat radius, cpVect offset);
-- [ ] cpShape* cpCircleShapeNew(cpBody *body, cpFloat radius, cpVect offset);
+- [x] cpShape* cpCircleShapeNew(cpBody *body, cpFloat radius, cpVect offset);
 - [ ] cpVect cpCircleShapeGetOffset(const cpShape *shape);
 - [ ] cpFloat cpCircleShapeGetRadius(const cpShape *shape);
 - [ ] cpSegmentShape* cpSegmentShapeAlloc(void);
 - [ ] cpSegmentShape* cpSegmentShapeInit(cpSegmentShape *seg, cpBody *body, cpVect a, cpVect b, cpFloat radius);
-- [ ] cpShape* cpSegmentShapeNew(cpBody *body, cpVect a, cpVect b, cpFloat radius);
+- [x] cpShape* cpSegmentShapeNew(cpBody *body, cpVect a, cpVect b, cpFloat radius);
 - [ ] void cpSegmentShapeSetNeighbors(cpShape *shape, cpVect prev, cpVect next);
 - [ ] cpVect cpSegmentShapeGetA(const cpShape *shape);
 - [ ] cpVect cpSegmentShapeGetB(const cpShape *shape);
@@ -339,13 +339,13 @@
 # cpSpace.h
 - [ ]cpSpace* cpSpaceAlloc(void);
 - [ ] cpSpace* cpSpaceInit(cpSpace *space);
-- [ ] cpSpace* cpSpaceNew(void);
+- [x] cpSpace* cpSpaceNew(void);
 - [ ] void cpSpaceDestroy(cpSpace *space);
-- [ ] void cpSpaceFree(cpSpace *space);
+- [x] void cpSpaceFree(cpSpace *space);
 - [ ] int cpSpaceGetIterations(const cpSpace *space);
 - [ ] void cpSpaceSetIterations(cpSpace *space, int iterations);
 - [ ] cpVect cpSpaceGetGravity(const cpSpace *space);
-- [ ] void cpSpaceSetGravity(cpSpace *space, cpVect gravity);
+- [x] void cpSpaceSetGravity(cpSpace *space, cpVect gravity);
 - [ ] cpFloat cpSpaceGetDamping(const cpSpace *space);
 - [ ] void cpSpaceSetDamping(cpSpace *space, cpFloat damping);
 - [ ] cpFloat cpSpaceGetIdleSpeedThreshold(const cpSpace *space);
@@ -360,14 +360,14 @@
 - [ ] void cpSpaceSetCollisionPersistence(cpSpace *space, cpTimestamp collisionPersistence);
 - [ ] cpDataPointer cpSpaceGetUserData(const cpSpace *space);
 - [ ] void cpSpaceSetUserData(cpSpace *space, cpDataPointer userData);
-- [ ] cpBody* cpSpaceGetStaticBody(const cpSpace *space);
+- [x] cpBody* cpSpaceGetStaticBody(const cpSpace *space);
 - [ ] cpFloat cpSpaceGetCurrentTimeStep(const cpSpace *space);
 - [ ] cpBool cpSpaceIsLocked(cpSpace *space);
 - [ ] cpCollisionHandler *cpSpaceAddDefaultCollisionHandler(cpSpace *space);
 - [ ] cpCollisionHandler *cpSpaceAddCollisionHandler(cpSpace *space, cpCollisionType a, cpCollisionType b);
 - [ ] cpCollisionHandler *cpSpaceAddWildcardHandler(cpSpace *space, cpCollisionType type);
-- [ ] cpShape* cpSpaceAddShape(cpSpace *space, cpShape *shape);
-- [ ] cpBody* cpSpaceAddBody(cpSpace *space, cpBody *body);
+- [x] cpShape* cpSpaceAddShape(cpSpace *space, cpShape *shape);
+- [x] cpBody* cpSpaceAddBody(cpSpace *space, cpBody *body);
 - [ ] cpConstraint* cpSpaceAddConstraint(cpSpace *space, cpConstraint *constraint);
 - [ ] void cpSpaceRemoveShape(cpSpace *space, cpShape *shape);
 - [ ] void cpSpaceRemoveBody(cpSpace *space, cpBody *body);
@@ -389,7 +389,7 @@
 - [ ] void cpSpaceReindexShape(cpSpace *space, cpShape *shape);
 - [ ] void cpSpaceReindexShapesForBody(cpSpace *space, cpBody *body);
 - [ ] void cpSpaceUseSpatialHash(cpSpace *space, cpFloat dim, int count);
-- [ ] void cpSpaceStep(cpSpace *space, cpFloat dt);
+- [x] void cpSpaceStep(cpSpace *space, cpFloat dt);
 - [ ] void cpSpaceDebugDraw(cpSpace *space, cpSpaceDebugDrawOptions *options);
 
 # cpSpatialIndex.h
