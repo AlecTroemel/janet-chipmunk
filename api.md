@@ -1,3 +1,5 @@
+Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
+
 # chipmunk.h
 - [ ] void cpMessage(const char *condition, const char *file, int line, int isError, int isHardError, const char *message, ...);
 - [ ] extern const char *cpVersionString;
