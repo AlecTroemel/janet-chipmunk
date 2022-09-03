@@ -41,4 +41,9 @@
    :bindings [(cpSpace space) (cpBody body)]
    :result (cpBody rbody))
 
+ (def-wrapper space-add-constraint cpSpaceAddConstraint
+   :doc "Add constraint to space."
+   :bindings [(cpSpace space) (cpConstraint constraint)]
+   :result (cpConstraint rconstraint))
+
  (cfuns-entry))

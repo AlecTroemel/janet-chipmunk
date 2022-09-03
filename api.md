@@ -368,7 +368,7 @@
 - [ ] cpCollisionHandler *cpSpaceAddWildcardHandler(cpSpace *space, cpCollisionType type);
 - [x] cpShape* cpSpaceAddShape(cpSpace *space, cpShape *shape);
 - [x] cpBody* cpSpaceAddBody(cpSpace *space, cpBody *body);
-- [ ] cpConstraint* cpSpaceAddConstraint(cpSpace *space, cpConstraint *constraint);
+- [x] cpConstraint* cpSpaceAddConstraint(cpSpace *space, cpConstraint *constraint);
 - [ ] void cpSpaceRemoveShape(cpSpace *space, cpShape *shape);
 - [ ] void cpSpaceRemoveBody(cpSpace *space, cpBody *body);
 - [ ] void cpSpaceRemoveConstraint(cpSpace *space, cpConstraint *constraint);

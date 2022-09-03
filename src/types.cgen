@@ -27,4 +27,5 @@
 ($ (use /codes)
    (def-wrapper-abstract-type Space cpSpace)
    (def-wrapper-abstract-type Body cpBody)
-   (def-wrapper-abstract-type Shape cpShape))
+   (def-wrapper-abstract-type Shape cpShape)
+   (def-wrapper-abstract-type Constraint cpConstraint))

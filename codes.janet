@@ -41,6 +41,7 @@
     'cpBody true
     'cpShape true
     'cpSpace true
+    'cpConstraint true
     _ false))
 
 (defn- deref-if-pointer [typ name]
@@ -54,6 +55,7 @@
     'cpShape ~(cp_getshape argv ,i)
     'cpSpace ~(cp_getspace argv ,i)
     'cpVect ~(cp_getvec2 argv ,i)
+    'cpVect ~(cp_getconstraint argv ,i)
     _ ~(,(symbol 'janet_get (std-types typ)) argv ,i)))
 
 (defn- get-wrapper [typ name]
@@ -62,6 +64,7 @@
     'cpShape ~(cp_wrap_shape ,name)
     'cpSpace ~(cp_wrap_space ,name)
     'cpVect ~(cp_wrap_vec2 ,name)
+    'cpVect ~(cp_wrap_constraint ,name)
     _ [(symbol 'janet_wrap_ (std-types typ)) name]))
 
 (defmacro def-wrapper [name fn &named doc bindings result]
