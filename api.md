@@ -4,14 +4,14 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] void cpMessage(const char *condition, const char *file, int line, int isError, int isHardError, const char *message, ...);
 - [ ] extern const char *cpVersionString;
 - [x] cpFloat cpMomentForCircle(cpFloat m, cpFloat r1, cpFloat r2, cpVect offset);
-- [ ] cpFloat cpAreaForCircle(cpFloat r1, cpFloat r2);
-- [ ] cpFloat cpMomentForSegment(cpFloat m, cpVect a, cpVect b, cpFloat radius);
-- [ ] cpFloat cpAreaForSegment(cpVect a, cpVect b, cpFloat radius);
+- [x] cpFloat cpAreaForCircle(cpFloat r1, cpFloat r2);
+- [x] cpFloat cpMomentForSegment(cpFloat m, cpVect a, cpVect b, cpFloat radius);
+- [x] cpFloat cpAreaForSegment(cpVect a, cpVect b, cpFloat radius);
 - [ ] cpFloat cpMomentForPoly(cpFloat m, int count, const cpVect *verts, cpVect offset, cpFloat radius);
 - [ ] cpFloat cpAreaForPoly(const int count, const cpVect *verts, cpFloat radius);
 - [ ] cpVect cpCentroidForPoly(const int count, const cpVect *verts);
 - [x] cpFloat cpMomentForBox(cpFloat m, cpFloat width, cpFloat height);
-- [ ] cpFloat cpMomentForBox2(cpFloat m, cpBB box);
+- [x] cpFloat cpMomentForBox2(cpFloat m, cpBB box);
 - [ ] int cpConvexHull(int count, const cpVect *verts, cpVect *result, int *first, cpFloat tol);
 
 # chipmunk_unsafe.h
@@ -242,7 +242,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpPolyShape* cpBoxShapeInit(cpPolyShape *poly, cpBody *body, cpFloat width, cpFloat height, cpFloat radius);
 - [ ] cpPolyShape* cpBoxShapeInit2(cpPolyShape *poly, cpBody *body, cpBB box, cpFloat radius);
 - [x] cpShape* cpBoxShapeNew(cpBody *body, cpFloat width, cpFloat height, cpFloat radius);
-- [ ] cpShape* cpBoxShapeNew2(cpBody *body, cpBB box, cpFloat radius);
+- [x] cpShape* cpBoxShapeNew2(cpBody *body, cpBB box, cpFloat radius);
 - [ ] int cpPolyShapeGetCount(const cpShape *shape);
 - [ ] cpVect cpPolyShapeGetVert(const cpShape *shape, int index);
 - [ ] cpFloat cpPolyShapeGetRadius(const cpShape *shape);
