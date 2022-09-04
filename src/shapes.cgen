@@ -5,82 +5,78 @@
 ($
  # Shape helpers Moments/area/ect
  ## Circle
- (def-wrapper moment-for-circle cpMomentForCircle
-   :doc "Calculate the moment of inertia for a hollow circle, r1 and r2 are the inner and outer diameters in no particular order."
-   :bindings [(float m) (float r1) (float r2) (cpVect offset)]
-   :result (float moment))
- (def-wrapper area-for-circle cpAreaForCircle
-   :doc "Signed area of a polygon shape. Returns a negative number for polygons with a clockwise winding."
-   :bindings [(float r1) (float r2)]
-   :result (float area))
+ (defj cpMomentForCircle
+   "Calculate the moment of inertia for a hollow circle, r1 and r2 are the inner and outer diameters in no particular order."
+   [(float m) (float r1) (float r2) (cpVect offset)] (float moment))
+
+ (defj cpAreaForCircle
+   "Signed area of a polygon shape. Returns a negative number for polygons with a clockwise winding."
+   [(float r1) (float r2)] (float area))
 
  ## Segment
- (def-wrapper moment-for-segment cpMomentForSegment
-   :doc "Calculate the moment of inertia for a line segment. The endpoints a and b are relative to the body."
-   :bindings [(float m) (cpVect a) (cpVect b) (float radius)]
-   :result (float moment))
- (def-wrapper area-for-segment cpAreaForSegment
-   :doc "Area of a beveled segment. (Will always be zero if radius is zero)."
-   :bindings [(cpVect a) (cpVect b) (float radius)]
-   :result (float area))
+ (defj cpMomentForSegment
+   "Calculate the moment of inertia for a line segment. The endpoints a and b are relative to the body."
+   [(float m) (cpVect a) (cpVect b) (float radius)] (float moment))
+
+ (defj cpAreaForSegment
+   "Area of a beveled segment. (Will always be zero if radius is zero)."
+   [(cpVect a) (cpVect b) (float radius)] (float area))
 
  ## Box
- (def-wrapper moment-for-box cpMomentForBox
-   :doc "Calculate the moment of inertia for a solid box centered on the body."
-   :bindings [(float mass) (float width) (float height)]
-   :result (float moment))
- (def-wrapper moment-for-box2 cpMomentForBox2
-   :doc "Calculate the moment of inertia for a solid box centered on the body using bounding box."
-   :bindings [(float mass) (cpBB box)]
-   :result (float moment))
+ (defj cpMomentForBox
+   "Calculate the moment of inertia for a solid box centered on the body."
+   [(float mass) (float width) (float height)] (float moment))
+
+ (defj cpMomentForBox2
+   "Calculate the moment of inertia for a solid box centered on the body using bounding box."
+   [(float mass) (cpBB box)] (float moment))
 
  # Constructors/Deconstructors
- (def-wrapper segment-shape-new cpSegmentShapeNew
-   :doc "Create new segment shape."
-   :bindings [(cpBody body) (cpVect a) (cpVect b) (float radius)]
-   :result (cpShape shape))
- (def-wrapper circle-shape-new cpCircleShapeNew
-   :doc "Create new circle shape."
-   :bindings [(cpBody body) (float radius) (cpVect offset)]
-   :result (cpShape shape))
- (def-wrapper box-shape-new cpBoxShapeNew
-   :doc "Create new box shape."
-   :bindings [(cpBody body) (float width) (float height) (float radius)]
-   :result (cpShape shape))
- (def-wrapper box-shape-new2 cpBoxShapeNew2
-   :doc "Create new box shape using bounding box."
-   :bindings [(cpBody body) (cpBB box) (float radius)]
-   :result (cpShape shape))
- (def-wrapper shape-free cpShapeFree
-   :doc "destroy the cpShape."
-   :bindings [(cpShape shape)])
+ (defj cpSegmentShapeNew
+   "Create new segment shape."
+   [(cpBody body) (cpVect a) (cpVect b) (float radius)] (cpShape shape))
+
+ (defj cpCircleShapeNew
+   "Create new circle shape."
+   [(cpBody body) (float radius) (cpVect offset)] (cpShape shape))
+
+ (defj cpBoxShapeNew
+   "Create new box shape."
+   [(cpBody body) (float width) (float height) (float radius)] (cpShape shape))
+
+ (defj cpBoxShapeNew2
+   "Create new box shape using bounding box."
+   [(cpBody body) (cpBB box) (float radius)] (cpShape shape))
+
+ (defj cpShapeFree
+   "destroy the cpShape."
+   [(cpShape shape)])
 
  # Elasticity
- (def-wrapper shape-get-elasticity cpShapeGetElasticity
-   :doc "get Elasticity of the shape."
-   :bindings [(cpShape shape)]
-   :result (float elasticity))
- (def-wrapper shape-set-elasticity cpShapeSetElasticity
-   :doc "Set elasticity of the shape."
-   :bindings [(cpShape shape) (float elasticity)])
+ (defj cpShapeGetElasticity
+   "get Elasticity of the shape."
+   [(cpShape shape)] (float elasticity))
+
+ (defj cpShapeSetElasticity
+   "Set elasticity of the shape."
+   [(cpShape shape) (float elasticity)])
 
  # Friction
- (def-wrapper shape-get-friction cpShapeGetFriction
-   :doc "get Friction of the shape."
-   :bindings [(cpShape shape)]
-   :result (float friction))
- (def-wrapper shape-set-friction cpShapeSetFriction
-   :doc "Set friction of the shape."
-   :bindings [(cpShape shape) (float friction)])
+ (defj cpShapeGetFriction
+   "get Friction of the shape."
+   [(cpShape shape)] (float friction))
+
+ (defj cpShapeSetFriction
+   "Set friction of the shape."
+   [(cpShape shape) (float friction)])
 
  # Circle getters
- (def-wrapper circle-shape-get-radius cpCircleShapeGetRadius
-   :doc "get radius of circle shape."
-   :bindings [(cpShape shape)]
-   :result (float radius))
- (def-wrapper circle-shape-get-offset cpCircleShapeGetOffset
-   :doc "get offset of circle shape."
-   :bindings [(cpShape shape)]
-   :result (cpVect offset))
+ (defj cpCircleShapeGetRadius
+   "get radius of circle shape."
+   [(cpShape shape)] (float radius))
+
+ (defj cpCircleShapeGetOffset
+   "get offset of circle shape."
+   [(cpShape shape)] (cpVect offset))
 
  (cfuns-entry))

@@ -1,5 +1,7 @@
 (use jpm/cgen)
 
+(use /camel-kebab)
+
 (def std-types {'int 'integer
                 'float 'number})
 
@@ -125,3 +127,33 @@
      (defn [static] ,(symbol 'cp_get (string/ascii-lower name)) [(*argv (const Janet)) (n int32_t)] ,(symbol wtype '*)
        (def *wrapper ,(symbol name 'Wrapper) (janet_getabstract argv n ,(symbol '&AT_ name)))
        (return (-> wrapper handle)))))
+
+
+(defmacro defj [fn doc bindings &opt result]
+  (default result :nil)
+  (def lispy-name (symbol (string/replace "cp-" "" (camel-to-kebab (string fn)))))
+  (def c-name (string "cfun_" (string/replace-all "-" "_" lispy-name)))
+  (def arity (length bindings))
+  (array/insert (libs-fns lib-name)
+                0 @[(string lispy-name) (symbol c-name) (ndoc lispy-name doc bindings)])
+  (var i 0)
+  ~'((defn [static] ,c-name [(argc int) (*argv Janet)] Janet
+       (janet_fixarity argc ,arity)
+
+       # Arguments
+       ,;(seq [[b-type b-name] :in bindings
+               :let [b-name (deref-if-pointer b-type b-name)
+                     afn (get-getter b-type i)]
+               :after (++ i)]
+              ~(def ,b-name ,b-type ,afn))
+
+       # actual function call and return
+       ,;(match result
+           [r-type r-name]
+           [['def (deref-if-pointer r-type r-name)
+             r-type [fn ;(map last bindings)]]
+            ~(return ,(get-wrapper r-type r-name))]
+
+           :nil
+            [[fn ;(map last bindings)]
+             '(return (janet_wrap_nil))]))))
