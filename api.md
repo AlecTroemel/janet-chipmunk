@@ -305,8 +305,8 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpCircleShape* cpCircleShapeAlloc(void);
 - [ ] cpCircleShape* cpCircleShapeInit(cpCircleShape *circle, cpBody *body, cpFloat radius, cpVect offset);
 - [x] cpShape* cpCircleShapeNew(cpBody *body, cpFloat radius, cpVect offset);
-- [ ] cpVect cpCircleShapeGetOffset(const cpShape *shape);
-- [ ] cpFloat cpCircleShapeGetRadius(const cpShape *shape);
+- [x] cpVect cpCircleShapeGetOffset(const cpShape *shape);
+- [x] cpFloat cpCircleShapeGetRadius(const cpShape *shape);
 - [ ] cpSegmentShape* cpSegmentShapeAlloc(void);
 - [ ] cpSegmentShape* cpSegmentShapeInit(cpSegmentShape *seg, cpBody *body, cpVect a, cpVect b, cpFloat radius);
 - [x] cpShape* cpSegmentShapeNew(cpBody *body, cpVect a, cpVect b, cpFloat radius);

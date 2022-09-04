@@ -73,4 +73,14 @@
    :doc "Set friction of the shape."
    :bindings [(cpShape shape) (float friction)])
 
+ # Circle getters
+ (def-wrapper circle-shape-get-radius cpCircleShapeGetRadius
+   :doc "get radius of circle shape."
+   :bindings [(cpShape shape)]
+   :result (float radius))
+ (def-wrapper circle-shape-get-offset cpCircleShapeGetOffset
+   :doc "get offset of circle shape."
+   :bindings [(cpShape shape)]
+   :result (cpVect offset))
+
  (cfuns-entry))
