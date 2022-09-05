@@ -1,0 +1,42 @@
+($
+ (use /codes)
+ (set-lib-name "body"))
+
+($
+ # Constructors/Deconstructors
+ (defj cpBodyNew
+   "create a new cpBody."
+   [(float mass) (float inertia)] (cpBody body))
+
+ (defj cpBodyFree
+   "destroy the cpBody."
+   [(cpBody body)])
+
+ # Position
+ (defj cpBodyGetPosition
+   "get the current [x y] position of the body."
+   [(cpBody body)] (cpVect position))
+
+ (defj cpBodySetPosition
+   "set the [x y] position of the body."
+   [(cpBody body) (cpVect position)])
+
+ # Velocity
+ (defj cpBodyGetVelocity
+   "get the current [x y] velocity of the body."
+   [(cpBody body)] (cpVect velocity))
+
+ (defj cpBodySetVelocity
+   "set the [x y] velocity of the body."
+   [(cpBody body) (cpVect velocity)])
+
+ # Force
+ (defj cpBodyGetForce
+   "get the current [x y] force of the body."
+   [(cpBody body)] (cpVect force))
+
+ (defj cpBodySetForce
+   "set the [x y] force of the body."
+   [(cpBody body) (cpVect force)])
+
+ (cfuns-entry))

@@ -1,0 +1,9 @@
+(@ include <janet/janet.h>)
+(@ include <chipmunk/chipmunk.h>)
+(@ include <chipmunk/chipmunk_private.h>)
+
+(@ include "\"types.h\"")
+
+($ (use /codes)
+   (module-imports)
+   (module-entries))

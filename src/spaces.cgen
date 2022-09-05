@@ -1,0 +1,44 @@
+($
+ (use /codes)
+ (set-lib-name "spaces"))
+
+($
+ # Constructors/Deconstructors
+ (defj cpSpaceNew
+   "Allocates and initializes a cpSpace struct."
+   [] (cpSpace space))
+
+ (defj cpSpaceFree
+   "destroy the cpSpace."
+   [(cpSpace space)])
+
+ # Gravity
+ (defj cpSpaceGetGravity
+   "get Gravity of the space."
+   [(cpSpace space)] (cpVect gravity))
+ (defj cpSpaceSetGravity
+   "Set gravity of the space."
+   [(cpSpace space) (cpVect gravity)])
+
+ (defj cpSpaceGetStaticBody
+   "A dedicated static body for the space. You don’t have to use it, but because its memory is managed automatically with the space its very convenient."
+   [(cpSpace space)] (cpBody body))
+
+ (defj cpSpaceStep
+   "Update the space for the given time step. Using a fixed time step is highly recommended."
+   [(cpSpace space) (float dt)])
+
+ # Adders
+ (defj cpSpaceAddShape
+   "Add shape to space."
+   [(cpSpace space) (cpShape shape)] (cpShape rshape))
+
+ (defj cpSpaceAddBody
+   "Add body to space."
+   [(cpSpace space) (cpBody body)] (cpBody rbody))
+
+ (defj cpSpaceAddConstraint
+   "Add constraint to space."
+   [(cpSpace space) (cpConstraint constraint)] (cpConstraint rconstraint))
+
+ (cfuns-entry))

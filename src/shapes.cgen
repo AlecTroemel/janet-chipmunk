@@ -1,0 +1,82 @@
+($
+ (use /codes)
+ (set-lib-name "shapes"))
+
+($
+ # Shape helpers Moments/area/ect
+ ## Circle
+ (defj cpMomentForCircle
+   "Calculate the moment of inertia for a hollow circle, r1 and r2 are the inner and outer diameters in no particular order."
+   [(float m) (float r1) (float r2) (cpVect offset)] (float moment))
+
+ (defj cpAreaForCircle
+   "Signed area of a polygon shape. Returns a negative number for polygons with a clockwise winding."
+   [(float r1) (float r2)] (float area))
+
+ ## Segment
+ (defj cpMomentForSegment
+   "Calculate the moment of inertia for a line segment. The endpoints a and b are relative to the body."
+   [(float m) (cpVect a) (cpVect b) (float radius)] (float moment))
+
+ (defj cpAreaForSegment
+   "Area of a beveled segment. (Will always be zero if radius is zero)."
+   [(cpVect a) (cpVect b) (float radius)] (float area))
+
+ ## Box
+ (defj cpMomentForBox
+   "Calculate the moment of inertia for a solid box centered on the body."
+   [(float mass) (float width) (float height)] (float moment))
+
+ (defj cpMomentForBox2
+   "Calculate the moment of inertia for a solid box centered on the body using bounding box."
+   [(float mass) (cpBB box)] (float moment))
+
+ # Constructors/Deconstructors
+ (defj cpSegmentShapeNew
+   "Create new segment shape."
+   [(cpBody body) (cpVect a) (cpVect b) (float radius)] (cpShape shape))
+
+ (defj cpCircleShapeNew
+   "Create new circle shape."
+   [(cpBody body) (float radius) (cpVect offset)] (cpShape shape))
+
+ (defj cpBoxShapeNew
+   "Create new box shape."
+   [(cpBody body) (float width) (float height) (float radius)] (cpShape shape))
+
+ (defj cpBoxShapeNew2
+   "Create new box shape using bounding box."
+   [(cpBody body) (cpBB box) (float radius)] (cpShape shape))
+
+ (defj cpShapeFree
+   "destroy the cpShape."
+   [(cpShape shape)])
+
+ # Elasticity
+ (defj cpShapeGetElasticity
+   "get Elasticity of the shape."
+   [(cpShape shape)] (float elasticity))
+
+ (defj cpShapeSetElasticity
+   "Set elasticity of the shape."
+   [(cpShape shape) (float elasticity)])
+
+ # Friction
+ (defj cpShapeGetFriction
+   "get Friction of the shape."
+   [(cpShape shape)] (float friction))
+
+ (defj cpShapeSetFriction
+   "Set friction of the shape."
+   [(cpShape shape) (float friction)])
+
+ # Circle getters
+ (defj cpCircleShapeGetRadius
+   "get radius of circle shape."
+   [(cpShape shape)] (float radius))
+
+ (defj cpCircleShapeGetOffset
+   "get offset of circle shape."
+   [(cpShape shape)] (cpVect offset))
+
+ (cfuns-entry))

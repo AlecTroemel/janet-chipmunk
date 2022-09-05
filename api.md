@@ -1,15 +1,17 @@
+Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
+
 # chipmunk.h
 - [ ] void cpMessage(const char *condition, const char *file, int line, int isError, int isHardError, const char *message, ...);
 - [ ] extern const char *cpVersionString;
 - [x] cpFloat cpMomentForCircle(cpFloat m, cpFloat r1, cpFloat r2, cpVect offset);
-- [ ] cpFloat cpAreaForCircle(cpFloat r1, cpFloat r2);
-- [ ] cpFloat cpMomentForSegment(cpFloat m, cpVect a, cpVect b, cpFloat radius);
-- [ ] cpFloat cpAreaForSegment(cpVect a, cpVect b, cpFloat radius);
+- [x] cpFloat cpAreaForCircle(cpFloat r1, cpFloat r2);
+- [x] cpFloat cpMomentForSegment(cpFloat m, cpVect a, cpVect b, cpFloat radius);
+- [x] cpFloat cpAreaForSegment(cpVect a, cpVect b, cpFloat radius);
 - [ ] cpFloat cpMomentForPoly(cpFloat m, int count, const cpVect *verts, cpVect offset, cpFloat radius);
 - [ ] cpFloat cpAreaForPoly(const int count, const cpVect *verts, cpFloat radius);
 - [ ] cpVect cpCentroidForPoly(const int count, const cpVect *verts);
 - [x] cpFloat cpMomentForBox(cpFloat m, cpFloat width, cpFloat height);
-- [ ] cpFloat cpMomentForBox2(cpFloat m, cpBB box);
+- [x] cpFloat cpMomentForBox2(cpFloat m, cpBB box);
 - [ ] int cpConvexHull(int count, const cpVect *verts, cpVect *result, int *first, cpFloat tol);
 
 # chipmunk_unsafe.h
@@ -240,7 +242,7 @@
 - [ ] cpPolyShape* cpBoxShapeInit(cpPolyShape *poly, cpBody *body, cpFloat width, cpFloat height, cpFloat radius);
 - [ ] cpPolyShape* cpBoxShapeInit2(cpPolyShape *poly, cpBody *body, cpBB box, cpFloat radius);
 - [x] cpShape* cpBoxShapeNew(cpBody *body, cpFloat width, cpFloat height, cpFloat radius);
-- [ ] cpShape* cpBoxShapeNew2(cpBody *body, cpBB box, cpFloat radius);
+- [x] cpShape* cpBoxShapeNew2(cpBody *body, cpBB box, cpFloat radius);
 - [ ] int cpPolyShapeGetCount(const cpShape *shape);
 - [ ] cpVect cpPolyShapeGetVert(const cpShape *shape, int index);
 - [ ] cpFloat cpPolyShapeGetRadius(const cpShape *shape);
@@ -303,8 +305,8 @@
 - [ ] cpCircleShape* cpCircleShapeAlloc(void);
 - [ ] cpCircleShape* cpCircleShapeInit(cpCircleShape *circle, cpBody *body, cpFloat radius, cpVect offset);
 - [x] cpShape* cpCircleShapeNew(cpBody *body, cpFloat radius, cpVect offset);
-- [ ] cpVect cpCircleShapeGetOffset(const cpShape *shape);
-- [ ] cpFloat cpCircleShapeGetRadius(const cpShape *shape);
+- [x] cpVect cpCircleShapeGetOffset(const cpShape *shape);
+- [x] cpFloat cpCircleShapeGetRadius(const cpShape *shape);
 - [ ] cpSegmentShape* cpSegmentShapeAlloc(void);
 - [ ] cpSegmentShape* cpSegmentShapeInit(cpSegmentShape *seg, cpBody *body, cpVect a, cpVect b, cpFloat radius);
 - [x] cpShape* cpSegmentShapeNew(cpBody *body, cpVect a, cpVect b, cpFloat radius);
@@ -344,7 +346,7 @@
 - [x] void cpSpaceFree(cpSpace *space);
 - [ ] int cpSpaceGetIterations(const cpSpace *space);
 - [ ] void cpSpaceSetIterations(cpSpace *space, int iterations);
-- [ ] cpVect cpSpaceGetGravity(const cpSpace *space);
+- [x] cpVect cpSpaceGetGravity(const cpSpace *space);
 - [x] void cpSpaceSetGravity(cpSpace *space, cpVect gravity);
 - [ ] cpFloat cpSpaceGetDamping(const cpSpace *space);
 - [ ] void cpSpaceSetDamping(cpSpace *space, cpFloat damping);
@@ -368,7 +370,7 @@
 - [ ] cpCollisionHandler *cpSpaceAddWildcardHandler(cpSpace *space, cpCollisionType type);
 - [x] cpShape* cpSpaceAddShape(cpSpace *space, cpShape *shape);
 - [x] cpBody* cpSpaceAddBody(cpSpace *space, cpBody *body);
-- [ ] cpConstraint* cpSpaceAddConstraint(cpSpace *space, cpConstraint *constraint);
+- [x] cpConstraint* cpSpaceAddConstraint(cpSpace *space, cpConstraint *constraint);
 - [ ] void cpSpaceRemoveShape(cpSpace *space, cpShape *shape);
 - [ ] void cpSpaceRemoveBody(cpSpace *space, cpBody *body);
 - [ ] void cpSpaceRemoveConstraint(cpSpace *space, cpConstraint *constraint);
