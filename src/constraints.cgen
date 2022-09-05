@@ -1,0 +1,51 @@
+($
+ (use /codes)
+ (set-lib-name "constraints"))
+
+($
+ # Joints
+ (defj cpPinJointNew
+   "a and b are the two bodies to connect, and anchorA and anchorB are the anchor points on those bodies. The distance between the two anchor points is measured when the joint is created."
+   [(cpBody *a) (cpBody *b) (cpVect anchorA) (cpVect anchorB)] (cpConstraint rconstraint))
+
+ (defj cpSlideJointNew
+   "a and b are the two bodies to connect, anchorA and anchorB are the anchor points on those bodies, and min and max define the allowed distances of the anchor points."
+   [(cpBody *a) (cpBody *b) (cpVect anchorA) (cpVect anchorB) (float min) (float max)]
+   (cpConstraint rconstraint))
+
+ (defj cpPivotJointNew
+   "a and b are the two bodies to connect, and pivot is the point in world coordinates of the pivot."
+   [(cpBody *a) (cpBody *b) (cpVect anchorA) (cpVect pivot)]
+   (cpConstraint rconstraint))
+
+ (defj cpGrooveJointNew
+   "The groove goes from groov_a to groove_b on body a, and the pivot is attached to anchorB on body b."
+   [(cpBody *a) (cpBody *b) (cpVect groove_a), (cpVect groove_b), (cpVect anchorB)]
+   (cpConstraint rconstraint))
+
+ (defj cpJointNew
+   ""
+   [(cpBody *a) (cpBody *b) ]
+   (cpConstraint rconstraint))
+
+ (defj cpJointNew
+   ""
+   [(cpBody *a) (cpBody *b) ]
+   (cpConstraint rconstraint))
+
+ (defj cpJointNew
+   ""
+   [(cpBody *a) (cpBody *b) ]
+   (cpConstraint rconstraint))
+
+ (defj cpJointNew
+   ""
+   [(cpBody *a) (cpBody *b) ]
+   (cpConstraint rconstraint))
+
+ (defj cpJointNew
+   ""
+   [(cpBody *a) (cpBody *b) ]
+   (cpConstraint rconstraint))
+
+ )

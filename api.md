@@ -177,7 +177,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpBool cpConstraintIsGrooveJoint(const cpConstraint *constraint);
 - [ ] cpGrooveJoint* cpGrooveJointAlloc(void);
 - [ ] cpGrooveJoint* cpGrooveJointInit(cpGrooveJoint *joint, cpBody *a, cpBody *b, cpVect groove_a, cpVect groove_b, cpVect anchorB);
-- [ ] cpConstraint* cpGrooveJointNew(cpBody *a, cpBody *b, cpVect groove_a, cpVect groove_b, cpVect anchorB);
+- [x] cpConstraint* cpGrooveJointNew(cpBody *a, cpBody *b, cpVect groove_a, cpVect groove_b, cpVect anchorB);
 - [ ] cpVect cpGrooveJointGetGrooveA(const cpConstraint *constraint);
 - [ ] void cpGrooveJointSetGrooveA(cpConstraint *constraint, cpVect grooveA);
 - [ ] cpVect cpGrooveJointGetGrooveB(const cpConstraint *constraint);
@@ -200,7 +200,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpBool cpConstraintIsPinJoint(const cpConstraint *constraint);
 - [ ] cpPinJoint* cpPinJointAlloc(void);
 - [ ] cpPinJoint* cpPinJointInit(cpPinJoint *joint, cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB);
-- [ ] cpConstraint* cpPinJointNew(cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB);
+- [x] cpConstraint* cpPinJointNew(cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB);
 - [ ] cpVect cpPinJointGetAnchorA(const cpConstraint *constraint);
 - [ ] void cpPinJointSetAnchorA(cpConstraint *constraint, cpVect anchorA);
 - [ ] cpVect cpPinJointGetAnchorB(const cpConstraint *constraint);
@@ -212,7 +212,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpBool cpConstraintIsPivotJoint(const cpConstraint *constraint);
 - [ ] cpPivotJoint* cpPivotJointAlloc(void);
 - [ ] cpPivotJoint* cpPivotJointInit(cpPivotJoint *joint, cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB);
-- [ ] cpConstraint* cpPivotJointNew(cpBody *a, cpBody *b, cpVect pivot);
+- [x] cpConstraint* cpPivotJointNew(cpBody *a, cpBody *b, cpVect pivot);
 - [ ] cpConstraint* cpPivotJointNew2(cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB);
 - [ ] cpVect cpPivotJointGetAnchorA(const cpConstraint *constraint);
 - [ ] void cpPivotJointSetAnchorA(cpConstraint *constraint, cpVect anchorA);
@@ -328,7 +328,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpBool cpConstraintIsSlideJoint(const cpConstraint *constraint);
 - [ ] cpSlideJoint* cpSlideJointAlloc(void);
 - [ ] cpSlideJoint* cpSlideJointInit(cpSlideJoint *joint, cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB, cpFloat min, cpFloat max);
-- [ ] cpConstraint* cpSlideJointNew(cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB, cpFloat min, cpFloat max);
+- [x] cpConstraint* cpSlideJointNew(cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB, cpFloat min, cpFloat max);
 - [ ] cpVect cpSlideJointGetAnchorA(const cpConstraint *constraint);
 - [ ] void cpSlideJointSetAnchorA(cpConstraint *constraint, cpVect anchorA);
 - [ ] cpVect cpSlideJointGetAnchorB(const cpConstraint *constraint);
