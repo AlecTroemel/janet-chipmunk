@@ -135,7 +135,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpBool cpConstraintIsDampedRotarySpring(const cpConstraint *constraint);
 - [ ] cpDampedRotarySpring* cpDampedRotarySpringAlloc(void);
 - [ ] cpDampedRotarySpring* cpDampedRotarySpringInit(cpDampedRotarySpring *joint, cpBody *a, cpBody *b, cpFloat restAngle, cpFloat stiffness, cpFloat damping);
-- [ ] cpConstraint* cpDampedRotarySpringNew(cpBody *a, cpBody *b, cpFloat restAngle, cpFloat stiffness, cpFloat damping);
+- [x] cpConstraint* cpDampedRotarySpringNew(cpBody *a, cpBody *b, cpFloat restAngle, cpFloat stiffness, cpFloat damping);
 - [ ] cpFloat cpDampedRotarySpringGetRestAngle(const cpConstraint *constraint);
 - [ ] void cpDampedRotarySpringSetRestAngle(cpConstraint *constraint, cpFloat restAngle);
 - [ ] cpFloat cpDampedRotarySpringGetStiffness(const cpConstraint *constraint);
@@ -149,7 +149,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpBool cpConstraintIsDampedSpring(const cpConstraint *constraint);
 - [ ] cpDampedSpring* cpDampedSpringAlloc(void);
 - [ ] cpDampedSpring* cpDampedSpringInit(cpDampedSpring *joint, cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB, cpFloat restLength, cpFloat stiffness, cpFloat damping);
-- [ ] cpConstraint* cpDampedSpringNew(cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB, cpFloat restLength, cpFloat stiffness, cpFloat damping);
+- [x] cpConstraint* cpDampedSpringNew(cpBody *a, cpBody *b, cpVect anchorA, cpVect anchorB, cpFloat restLength, cpFloat stiffness, cpFloat damping);
 - [ ] cpVect cpDampedSpringGetAnchorA(const cpConstraint *constraint);
 - [ ] void cpDampedSpringSetAnchorA(cpConstraint *constraint, cpVect anchorA);
 - [ ] cpVect cpDampedSpringGetAnchorB(const cpConstraint *constraint);
@@ -167,7 +167,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpBool cpConstraintIsGearJoint(const cpConstraint *constraint);
 - [ ] cpGearJoint* cpGearJointAlloc(void);
 - [ ] cpGearJoint* cpGearJointInit(cpGearJoint *joint, cpBody *a, cpBody *b, cpFloat phase, cpFloat ratio);
-- [ ] cpConstraint* cpGearJointNew(cpBody *a, cpBody *b, cpFloat phase, cpFloat ratio);
+- [x] cpConstraint* cpGearJointNew(cpBody *a, cpBody *b, cpFloat phase, cpFloat ratio);
 - [ ] cpFloat cpGearJointGetPhase(const cpConstraint *constraint);
 - [ ] void cpGearJointSetPhase(cpConstraint *constraint, cpFloat phase);
 - [ ] cpFloat cpGearJointGetRatio(const cpConstraint *constraint);
@@ -251,7 +251,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpBool cpConstraintIsRatchetJoint(const cpConstraint *constraint);
 - [ ] cpRatchetJoint* cpRatchetJointAlloc(void);
 - [ ] cpRatchetJoint* cpRatchetJointInit(cpRatchetJoint *joint, cpBody *a, cpBody *b, cpFloat phase, cpFloat ratchet);
-- [ ] cpConstraint* cpRatchetJointNew(cpBody *a, cpBody *b, cpFloat phase, cpFloat ratchet);
+- [x] cpConstraint* cpRatchetJointNew(cpBody *a, cpBody *b, cpFloat phase, cpFloat ratchet);
 - [ ] cpFloat cpRatchetJointGetAngle(const cpConstraint *constraint);
 - [ ] void cpRatchetJointSetAngle(cpConstraint *constraint, cpFloat angle);
 - [ ] cpFloat cpRatchetJointGetPhase(const cpConstraint *constraint);
@@ -320,7 +320,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpBool cpConstraintIsSimpleMotor(const cpConstraint *constraint);
 - [ ] cpSimpleMotor* cpSimpleMotorAlloc(void);
 - [ ] cpSimpleMotor* cpSimpleMotorInit(cpSimpleMotor *joint, cpBody *a, cpBody *b, cpFloat rate);
-- [ ] cpConstraint* cpSimpleMotorNew(cpBody *a, cpBody *b, cpFloat rate);
+- [x] cpConstraint* cpSimpleMotorNew(cpBody *a, cpBody *b, cpFloat rate);
 - [ ] cpFloat cpSimpleMotorGetRate(const cpConstraint *constraint);
 - [ ] void cpSimpleMotorSetRate(cpConstraint *constraint, cpFloat rate);
 

@@ -20,32 +20,32 @@
 
  (defj cpGrooveJointNew
    "The groove goes from groov_a to groove_b on body a, and the pivot is attached to anchorB on body b."
-   [(cpBody *a) (cpBody *b) (cpVect groove_a), (cpVect groove_b), (cpVect anchorB)]
+   [(cpBody *a) (cpBody *b) (cpVect groove_a) (cpVect groove_b) (cpVect anchorB)]
    (cpConstraint rconstraint))
 
- (defj cpJointNew
-   ""
-   [(cpBody *a) (cpBody *b) ]
+ (defj cpDampedSpringNew
+   "Defined much like a slide joint. restLength is the distance the spring wants to be, stiffness is the spring constant (Young’s modulus), and damping is how soft to make the damping of the spring."
+   [(cpBody *a) (cpBody *b) (cpVect anchorA) (cpVect anchorB) (float restLength) (float stiffness) (float damping)]
    (cpConstraint rconstraint))
 
- (defj cpJointNew
-   ""
-   [(cpBody *a) (cpBody *b) ]
+ (defj cpDampedRotarySpringNew
+   "Like a damped spring, but works in an angular fashion. restAngle is the relative angle in radians that the bodies want to have, stiffness and damping work basically the same as on a damped spring."
+   [(cpBody *a) (cpBody *b) (float restAngle) (float stiffness) (float damping)]
    (cpConstraint rconstraint))
 
- (defj cpJointNew
-   ""
-   [(cpBody *a) (cpBody *b) ]
+ (defj cpRatchetJointNew
+   "Works like a socket wrench. ratchet is the distance between “clicks”, phase is the initial offset to use when deciding where the ratchet angles are."
+   [(cpBody *a) (cpBody *b) (float phase) (float ratchet)]
    (cpConstraint rconstraint))
 
- (defj cpJointNew
-   ""
-   [(cpBody *a) (cpBody *b) ]
+ (defj cpGearJointNew
+   "Keeps the angular velocity ratio of a pair of bodies constant. ratio is always measured in absolute terms. It is currently not possible to set the ratio in relation to a third body’s angular velocity. phase is the initial angular offset of the two bodies."
+   [(cpBody *a) (cpBody *b) (float phase) (float ratio)]
    (cpConstraint rconstraint))
 
- (defj cpJointNew
-   ""
-   [(cpBody *a) (cpBody *b) ]
+ (defj cpSimpleMotor
+   "Keeps the relative angular velocity of a pair of bodies constant. rate is the desired relative angular velocity. You will usually want to set an force (torque) maximum for motors as otherwise they will be able to apply a nearly infinite torque to keep the bodies moving."
+   [(cpBody *a) (cpBody *b) (float rate)]
    (cpConstraint rconstraint))
 
  )
