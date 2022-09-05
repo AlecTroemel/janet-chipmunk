@@ -4,39 +4,39 @@
 
 ($
  # Constructors/Deconstructors
- (def-wrapper body-new cpBodyNew
-   :doc "create a new cpBody."
-   :bindings [(float mass) (float inertia)]
-   :result (cpBody body))
- (def-wrapper body-free cpBodyFree
-   :doc "destroy the cpBody."
-   :bindings [(cpBody body)])
+ (defj cpBodyNew
+   "create a new cpBody."
+   [(float mass) (float inertia)] (cpBody body))
+
+ (defj cpBodyFree
+   "destroy the cpBody."
+   [(cpBody body)])
 
  # Position
- (def-wrapper body-get-position cpBodyGetPosition
-   :doc "get the current [x y] position of the body."
-   :bindings [(cpBody body)]
-   :result (cpVect position))
- (def-wrapper body-set-position cpBodySetPosition
-   :doc "set the [x y] position of the body."
-   :bindings [(cpBody body) (cpVect position)])
+ (defj cpBodyGetPosition
+   "get the current [x y] position of the body."
+   [(cpBody body)] (cpVect position))
+
+ (defj cpBodySetPosition
+   "set the [x y] position of the body."
+   [(cpBody body) (cpVect position)])
 
  # Velocity
- (def-wrapper body-get-velocity cpBodyGetVelocity
-   :doc "get the current [x y] velocity of the body."
-   :bindings [(cpBody body)]
-   :result (cpVect velocity))
- (def-wrapper body-set-velocity cpBodySetVelocity
-   :doc "set the [x y] velocity of the body."
-   :bindings [(cpBody body) (cpVect velocity)])
+ (defj cpBodyGetVelocity
+   "get the current [x y] velocity of the body."
+   [(cpBody body)] (cpVect velocity))
+
+ (defj cpBodySetVelocity
+   "set the [x y] velocity of the body."
+   [(cpBody body) (cpVect velocity)])
 
  # Force
- (def-wrapper body-get-force cpBodyGetForce
-   :doc "get the current [x y] force of the body."
-   :bindings [(cpBody body)]
-   :result (cpVect force))
- (def-wrapper body-set-force cpBodySetForce
-   :doc "set the [x y] force of the body."
-   :bindings [(cpBody body) (cpVect force)])
+ (defj cpBodyGetForce
+   "get the current [x y] force of the body."
+   [(cpBody body)] (cpVect force))
+
+ (defj acpBodySetForce
+   "set the [x y] force of the body."
+   [(cpBody body) (cpVect force)])
 
  (cfuns-entry))

@@ -71,34 +71,6 @@
     'cpBB ~(cp_wrap_bb ,name)
     _ [(symbol 'janet_wrap_ (std-types typ)) name]))
 
-(defmacro def-wrapper [name fn &named doc bindings result]
-  (default result :nil)
-  (def arity (length bindings))
-  (def cname (string "cfun_" (string/replace-all "-" "_" name)))
-  (array/insert (libs-fns lib-name)
-                0 @[(string name) (symbol cname) (ndoc name doc bindings)])
-  (var i 0)
-  ~'((defn [static] ,cname [(argc int) (*argv Janet)] Janet
-       (janet_fixarity argc ,arity)
-
-       # Arguments
-       ,;(seq [[b-type b-name] :in bindings
-               :let [b-name (deref-if-pointer b-type b-name)
-                     afn (get-getter b-type i)]
-               :after (++ i)]
-              ~(def ,b-name ,b-type ,afn))
-
-       # actual function call and return
-       ,;(match result
-          [r-type r-name]
-          [['def (deref-if-pointer r-type r-name)
-            r-type [fn ;(map last bindings)]]
-           ~(return ,(get-wrapper r-type r-name))]
-
-          :nil
-            [[fn ;(map last bindings)]
-             '(return (janet_wrap_nil))]))))
-
 (defmacro def-wrapper-abstract-type [name wtype]
   ~'((deft ,(symbol name 'Wrapper) (struct *handle ,wtype))
      # Get declaration

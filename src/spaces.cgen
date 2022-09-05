@@ -4,46 +4,41 @@
 
 ($
  # Constructors/Deconstructors
- (def-wrapper space-new cpSpaceNew
-   :doc "Allocates and initializes a cpSpace struct."
-   :bindings []
-   :result (cpSpace space))
- (def-wrapper space-free cpSpaceFree
-   :doc "destroy the cpSpace."
-   :bindings [(cpSpace space)])
+ (defj cpSpaceNew
+   "Allocates and initializes a cpSpace struct."
+   [] (cpSpace space))
+
+ (defj cpSpaceFree
+   "destroy the cpSpace."
+   [(cpSpace space)])
 
  # Gravity
- (def-wrapper space-get-gravity cpSpaceGetGravity
-   :doc "get Gravity of the space."
-   :bindings [(cpSpace space)]
-   :result (cpVect gravity))
- (def-wrapper space-set-gravity cpSpaceSetGravity
-   :doc "Set gravity of the space."
-   :bindings [(cpSpace space) (cpVect gravity)])
+ (defj cpSpaceGetGravity
+   "get Gravity of the space."
+   [(cpSpace space)] (cpVect gravity))
+ (defj cpSpaceSetGravity
+   "Set gravity of the space."
+   [(cpSpace space) (cpVect gravity)])
 
- (def-wrapper space-get-static-body cpSpaceGetStaticBody
-   :doc "A dedicated static body for the space. You don’t have to use it, but because its memory is managed automatically with the space its very convenient."
-   :bindings [(cpSpace space)]
-   :result (cpBody body))
+ (defj cpSpaceGetStaticBody
+   "A dedicated static body for the space. You don’t have to use it, but because its memory is managed automatically with the space its very convenient."
+   [(cpSpace space)] (cpBody body))
 
- (def-wrapper space-step cpSpaceStep
-   :doc "Update the space for the given time step. Using a fixed time step is highly recommended."
-   :bindings [(cpSpace space) (float dt)])
+ (defj cpSpaceStep
+   "Update the space for the given time step. Using a fixed time step is highly recommended."
+   [(cpSpace space) (float dt)])
 
  # Adders
- (def-wrapper space-add-shape cpSpaceAddShape
-   :doc "Add shape to space."
-   :bindings [(cpSpace space) (cpShape shape)]
-   :result (cpShape rshape))
+ (defj cpSpaceAddShape
+   "Add shape to space."
+   [(cpSpace space) (cpShape shape)] (cpShape rshape))
 
- (def-wrapper space-add-body cpSpaceAddBody
-   :doc "Add body to space."
-   :bindings [(cpSpace space) (cpBody body)]
-   :result (cpBody rbody))
+ (defj cpSpaceAddBody
+   "Add body to space."
+   [(cpSpace space) (cpBody body)] (cpBody rbody))
 
- (def-wrapper space-add-constraint cpSpaceAddConstraint
-   :doc "Add constraint to space."
-   :bindings [(cpSpace space) (cpConstraint constraint)]
-   :result (cpConstraint rconstraint))
+ (defj cpSpaceAddConstraint
+   "Add constraint to space."
+   [(cpSpace space) (cpConstraint constraint)] (cpConstraint rconstraint))
 
  (cfuns-entry))
