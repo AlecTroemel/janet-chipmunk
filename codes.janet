@@ -58,7 +58,9 @@
     'cpSpace ~(cp_getspace argv ,i)
     'cpConstraint ~(cp_getconstraint argv ,i)
     'cpVect ~(cp_getvect argv ,i)
+    'cpBodyType ~(cp_getbodytype argv ,i)
     'cpBB ~(cp_getbb argv ,i)
+    'cpShapeFilter ~(cp_getshapefilter argv ,i)
     _ ~(,(symbol 'janet_get (std-types typ)) argv ,i)))
 
 (defn- get-wrapper [typ name]
@@ -68,7 +70,9 @@
     'cpSpace ~(cp_wrap_space ,name)
     'cpConstraint ~(cp_wrap_constraint ,name)
     'cpVect ~(cp_wrap_vect ,name)
+    'cpBodyType ~(cp_wrap_bodytype ,name)
     'cpBB ~(cp_wrap_bb ,name)
+    'cpShapeFilter ~(cp_wrap_shapefilter ,name)
     _ [(symbol 'janet_wrap_ (std-types typ)) name]))
 
 (defmacro def-wrapper-abstract-type [name wtype]

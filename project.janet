@@ -12,12 +12,16 @@
 (import /src/shapes)
 (import /src/spaces)
 (import /src/main)
+(import /src/constraints)
 
 (task "src/types.h" [] (types/render "src/types.h"))
 (task "src/body.h" [] (body/render "src/body.h"))
 (task "src/shapes.h" [] (shapes/render "src/shapes.h"))
 (task "src/spaces.h" [] (spaces/render "src/spaces.h"))
+(task "src/constraints.h" [] (constraints/render "src/constraints.h"))
+
 (task "src/main.c" [] (main/render "src/main.c"))
+
 
 (declare-native
  :name "chipmunk"
@@ -61,4 +65,6 @@
  :headers ["src/types.h"
            "src/body.h"
            "src/shapes.h"
-           "src/spaces.h"])
+           "src/spaces.h"
+           "src/constraints.h"
+           ])

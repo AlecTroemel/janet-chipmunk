@@ -39,4 +39,13 @@
    "set the [x y] force of the body."
    [(cpBody body) (cpVect force)])
 
+ # body Type
+ (defj cpBodyGetType
+   "Get the type of a body (dynamic, kinematic, static)."
+   [(cpBody body)] (cpBodyType val))
+
+ (defj cpBodySetType
+   "Set the type of a body (dynamic, kinematic, static)."
+   [(cpBody body) (cpBodyType val)])
+
  (cfuns-entry))

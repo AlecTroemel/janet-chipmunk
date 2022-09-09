@@ -5,6 +5,8 @@
     (janet_panicf "expected number, got %v" (index idx.items i)))
   (return (cast float (janet_unwrap_number (index idx.items i)))))
 
+
+
 # 2d Vector
 (defn [static] cp_getvect [(*argv (const Janet)) (n int32_t)] cpVect
   (def idx JanetView (janet_getindexed argv n))
@@ -38,6 +40,84 @@
   (set (index tup 1) (janet_wrap_number v.r))
   (set (index tup 1) (janet_wrap_number v.t))
   (return (janet_wrap_tuple (janet_tuple_end tup))))
+
+# BodyType
+(defn [static] cp_getbodytype [(*argv (const Janet)) (n int32_t)] cpBodyType
+  (def *bodytype (const uint8_t) (janet_getkeyword argv n))
+
+  (if (not (janet_cstrcmp bodytype "dynamic"))
+    (return CP_BODY_TYPE_DYNAMIC))
+  (if (not (janet_cstrcmp bodytype "kinematic"))
+    (return CP_BODY_TYPE_KINEMATIC))
+  (if (not (janet_cstrcmp bodytype "static"))
+    (return CP_BODY_TYPE_STATIC))
+
+  (janet_panicf "not a valid cpBodyType"))
+
+(defn [static] cp_wrap_bodytype [(v cpBodyType)] Janet
+  (if (== v CP_BODY_TYPE_DYNAMIC)
+    (return (janet_wrap_keyword "dynamic")))
+  (if (== v CP_BODY_TYPE_KINEMATIC)
+    (return (janet_wrap_keyword "kinematic")))
+  (if (== v CP_BODY_TYPE_STATIC)
+    (return (janet_wrap_keyword "static"))))
+
+# Shape Filters
+# (janet_ckeywordv k)
+(defn [static] cp_getgroup [(*kv (const JanetKV)) (key Janet)] cpGroup
+  (def val Janet (janet_struct_get kv key))
+
+  (if (janet_checktype val JANET_NUMBER)
+    (return (cast cpGroup (janet_unwrap_integer val))))
+
+  (if (not (janet_checktype val JANET_KEYWORD))
+    (janet_panicf "expected number or keyword, got %v" val))
+
+  (def *flag (const uint8_t) (janet_unwrap_keyword val))
+
+  (if (not (janet_cstrcmp flag "none"))
+    (return CP_NO_GROUP))
+
+  (janet_panicf "invalid group flag"))
+
+(defn [static] cp_getbitmask [(*kv (const JanetKV)) (key Janet)] cpBitmask
+  (def val Janet (janet_struct_get kv key))
+
+  (if (janet_checktype val JANET_NUMBER)
+    (return (cast cpBitmask (janet_unwrap_integer val))))
+
+  (if (not (janet_checktype val JANET_KEYWORD))
+    (janet_panicf "expected number or keyword, got %v" val))
+
+  (def *flag (const uint8_t) (janet_unwrap_keyword val))
+
+  (if (not (janet_cstrcmp flag "all"))
+    (return CP_ALL_CATEGORIES))
+
+  (if (not (janet_cstrcmp flag "none"))
+    (return (bnot CP_ALL_CATEGORIES)))
+
+  (janet_panicf "invalid bitmask flag"))
+
+(defn [static] cp_getshapefilter [(*argv (const Janet)) (n int32_t)] cpShapeFilter
+  (def *kv (const JanetKV) (janet_getstruct argv n))
+  (return
+   (cpShapeFilterNew (cp_getgroup kv (janet_ckeywordv "group"))
+                     (cp_getbitmask kv (janet_ckeywordv "categories"))
+                     (cp_getbitmask kv (janet_ckeywordv "mask")))))
+
+(defn [static] cp_wrap_shapefilter [(v cpShapeFilter)] Janet
+  (def *filter JanetKV (janet_struct_begin 3))
+  (janet_struct_put filter
+                    (janet_ckeywordv "group")
+                    (janet_wrap_integer v.group))
+  (janet_struct_put filter
+                    (janet_ckeywordv "categories")
+                    (janet_wrap_integer v.categories))
+  (janet_struct_put filter
+                    (janet_ckeywordv "mask")
+                    (janet_wrap_integer v.mask))
+  (return (janet_wrap_struct filter)))
 
 # Abstract types
 ($ (use /codes)

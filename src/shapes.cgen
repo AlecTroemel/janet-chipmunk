@@ -79,4 +79,18 @@
    "get offset of circle shape."
    [(cpShape shape)] (cpVect offset))
 
+ # Filter
+ (defj cpShapeGetFilter
+   "get the collision filter for this shape. See Filtering Collisions for more information."
+   [(cpShape shape)] (cpShapeFilter filter))
+
+ (defj cpShapeSetFilter
+   "Set the collision filter for this shape. See Filtering Collisions for more information."
+   [(cpShape shape) (cpShapeFilter filter)])
+
+ # Body
+ (defj cpShapeGetBody
+   "Get the rigid body the shape is attached to."
+   [(cpShape shape)] (cpBody body))
+
  (cfuns-entry))

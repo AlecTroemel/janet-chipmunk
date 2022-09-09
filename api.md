@@ -68,8 +68,8 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] void cpBodySleep(cpBody *body);
 - [ ] void cpBodySleepWithGroup(cpBody *body, cpBody *group);
 - [ ] cpBool cpBodyIsSleeping(const cpBody *body);
-- [ ] cpBodyType cpBodyGetType(cpBody *body);
-- [ ] void cpBodySetType(cpBody *body, cpBodyType type);
+- [x] cpBodyType cpBodyGetType(cpBody *body);
+- [x] void cpBodySetType(cpBody *body, cpBodyType type);
 - [ ] cpSpace* cpBodyGetSpace(const cpBody *body);
 - [ ] cpFloat cpBodyGetMass(const cpBody *body);
 - [ ] void cpBodySetMass(cpBody *body, cpFloat m);
@@ -300,8 +300,8 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] void cpShapeSetUserData(cpShape *shape, cpDataPointer userData);
 - [ ] cpCollisionType cpShapeGetCollisionType(const cpShape *shape);
 - [ ] void cpShapeSetCollisionType(cpShape *shape, cpCollisionType collisionType);
-- [ ] cpShapeFilter cpShapeGetFilter(const cpShape *shape);
-- [ ] void cpShapeSetFilter(cpShape *shape, cpShapeFilter filter);
+- [x] cpShapeFilter cpShapeGetFilter(const cpShape *shape);
+- [x] void cpShapeSetFilter(cpShape *shape, cpShapeFilter filter);
 - [ ] cpCircleShape* cpCircleShapeAlloc(void);
 - [ ] cpCircleShape* cpCircleShapeInit(cpCircleShape *circle, cpBody *body, cpFloat radius, cpVect offset);
 - [x] cpShape* cpCircleShapeNew(cpBody *body, cpFloat radius, cpVect offset);
@@ -345,7 +345,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] void cpSpaceDestroy(cpSpace *space);
 - [x] void cpSpaceFree(cpSpace *space);
 - [ ] int cpSpaceGetIterations(const cpSpace *space);
-- [ ] void cpSpaceSetIterations(cpSpace *space, int iterations);
+- [x] void cpSpaceSetIterations(cpSpace *space, int iterations);
 - [x] cpVect cpSpaceGetGravity(const cpSpace *space);
 - [x] void cpSpaceSetGravity(cpSpace *space, cpVect gravity);
 - [ ] cpFloat cpSpaceGetDamping(const cpSpace *space);
@@ -353,7 +353,7 @@ Docs --> http://chipmunk-physics.net/release/ChipmunkLatest-Docs/
 - [ ] cpFloat cpSpaceGetIdleSpeedThreshold(const cpSpace *space);
 - [ ] void cpSpaceSetIdleSpeedThreshold(cpSpace *space, cpFloat idleSpeedThreshold);
 - [ ] cpFloat cpSpaceGetSleepTimeThreshold(const cpSpace *space);
-- [ ] void cpSpaceSetSleepTimeThreshold(cpSpace *space, cpFloat sleepTimeThreshold);
+- [x] void cpSpaceSetSleepTimeThreshold(cpSpace *space, cpFloat sleepTimeThreshold);
 - [ ] cpFloat cpSpaceGetCollisionSlop(const cpSpace *space);
 - [ ] void cpSpaceSetCollisionSlop(cpSpace *space, cpFloat collisionSlop);
 - [ ] cpFloat cpSpaceGetCollisionBias(const cpSpace *space);
