@@ -243,8 +243,7 @@
     (create-ratchet-joint [3 1] static-body)
     (create-gear-joint [0 2] static-body)
     (create-simple-motor [1 2] static-body)
-    (create-car [2 2])
-    ))
+    (create-car [2 2])))
 
 (defn update [dt]
   (space-step space dt))
