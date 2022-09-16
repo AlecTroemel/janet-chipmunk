@@ -77,20 +77,23 @@
 
 (defmacro def-wrapper-abstract-type [name wtype]
   ~'((deft ,(symbol name 'Wrapper) (struct *handle ,wtype))
-     # Get declaration
-     (defn ,(symbol (string/ascii-lower name) '_get)
-       [(*p void) (key Janet) (*out Janet)] int)
+     # # TODO: Get declaration
+     # (defn ,(symbol (string/ascii-lower name) '_get)
+     #   [(*p void) (key Janet) (*out Janet)] int)
 
-     # Put declaration
-     (defn ,(symbol (string/ascii-lower name) '_put)
-       [(*p void) (key Janet) (value Janet)] void)
+     # # TODO: Put declaration
+     # (defn ,(symbol (string/ascii-lower name) '_put)
+     #   [(*p void) (key Janet) (value Janet)] void)
 
      # Abstract class def
      (def [static const] ,(symbol 'AT_ name) JanetAbstractType
-       (array ,(string "chipmunk/" name) NULL NULL
-              ,(symbol (string/ascii-lower name) '_get)
-              ,(symbol (string/ascii-lower name) '_put)
-               JANET_ATEND_PUT))
+       (array ,(string "chipmunk/" name)
+               JANET_ATEND_NAME
+               # NULL NULL
+               # ,(symbol (string/ascii-lower name) '_get)
+               # ,(symbol (string/ascii-lower name) '_put)
+               # JANET_ATEND_PUT
+               ))
 
      # cp_wrap_type
      (defn [static] ,(symbol 'cp_wrap_ (string/ascii-lower name)) [(*val ,wtype)] Janet
